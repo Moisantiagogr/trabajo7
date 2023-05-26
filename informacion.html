@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacion</title>
+</head>
+<body>
+    <h1 id="mensajenom"></h1>
+<h2  id="mensajeapepa"></h2> <h2 id="mensajeapema"></h2>
+
+<h1 id="mensajecon"></h1>
+<a  id="mensajecorreo"></a>
+<br>
+<br>
+<a id="mensajetel"></a>
+
+<p id="mensajeEdad"></p>
+
+
+
+    <script>
+        getParameter = (key)=>{
+               address= window.location.search;
+               ParameterList= new URLSearchParams(address)
+               return ParameterList.get(key);
+           }
+           console.log(getParameter("nombre"));
+       
+           var nombre =getParameter("nombre");
+           if(nombre !=null){
+               document.getElementById("mensajenom").innerHTML=nombre;
+           }
+       
+           console.log(getParameter("apema"));
+       
+           var apellidom =getParameter("apema");
+           if(apellidom !=null){
+               document.getElementById("mensajeapema").innerHTML=apellidom;
+           }
+       
+       
+           console.log(getParameter("apepa"));
+       
+       var apellidop=getParameter("apepa");
+       if(apellidop !=null){
+           document.getElementById("mensajeapepa").innerHTML=apellidop;
+       }
+    
+
+       console.log(getParameter("correo"));
+
+var Correoo=getParameter("correo");
+if(Correoo !=null){
+    document.getElementById("mensajecorreo").innerHTML=Correoo;
+}
+
+console.log(getParameter("telefono"));
+
+var tele = getParameter("telefono");
+if (tele != null) {
+  document.getElementById("mensajetel").innerHTML = '<a href="tel:' + tele + '">' + tele + '</a>';
+}
+
+var correo = getParameter("correo");
+if (correo != null) {
+  document.getElementById("mensajecorreo").innerHTML = '<a href="mailto:' + correo + '">' + correo + '</a>';
+}
+
+
+
+
+var password = getParameter("contra");
+if (password != null) {
+  if (password.length < 5) {
+    alert("¡Advertencia! Su contraseña es insegura.");
+  }
+}
+
+
+
+var passwordR = getParameter("repcontra");
+if (passwordR != null) {
+  if (passwordR.length < 5) {
+    alert("¡Advertencia! Su contraseña es insegura.");
+  }
+}
+
+
+var fecha = getParameter("fechanac");
+if (fecha != null) {
+  var dateOfBirth = fecha;
+  var today = new Date();
+  var birthDate = new Date(dateOfBirth);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var monthDiff = today.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  
+  document.getElementById("mensajeEdad").innerHTML = "Su edad actual es: " + age + " años.";
+}
+
+
+
+
+
+           </script>
+</body>
+</html>
